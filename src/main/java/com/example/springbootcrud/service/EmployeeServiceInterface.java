@@ -17,4 +17,5 @@ public interface EmployeeServiceInterface {
     List<Employee> addAllEmployee(List<Employee> employee);
 
     void deleteAllEmployees();
+
 }

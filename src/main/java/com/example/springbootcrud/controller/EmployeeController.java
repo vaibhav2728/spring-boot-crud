@@ -19,16 +19,22 @@ public class EmployeeController {
     private EmployeeServiceInterface employeeServiceInterface;
 
 
-    @PostMapping("/save")
+    @PostMapping("/saveEmployee")
     public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
         Employee employeeSaved= employeeServiceInterface.addEmployee(employee);
         return new ResponseEntity<>(employeeSaved, HttpStatus.CREATED);
     }
 
-    @PostMapping("/saveAll")
+    @PostMapping("/saveAllEmployee")
     public ResponseEntity<List<Employee>> addAllEmployee(@RequestBody List<Employee> employee){
         List<Employee> employeeList= employeeServiceInterface.addAllEmployee(employee);
         return new ResponseEntity<>(employeeList, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/updateEmployee")
+    public ResponseEntity<Employee> updateEmployeeName(@RequestBody Employee employee){
+        Employee employeeUpdated= employeeServiceInterface.addEmployee(employee);
+        return new ResponseEntity<>(employeeUpdated, HttpStatus.OK);
     }
 
     @GetMapping("/getAllEmployee")
@@ -46,14 +52,14 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/deleteEmployee/{id}")
-    public void deleteEmployeeById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteEmployeeById(@PathVariable Long id){
         employeeServiceInterface.deleteEmployeeById(id);
-
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/deleteAllEmployees")
-    public void deleteAllEmployees(){
+    public ResponseEntity<Void> deleteAllEmployees(){
         employeeServiceInterface.deleteAllEmployees();
-
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 }
