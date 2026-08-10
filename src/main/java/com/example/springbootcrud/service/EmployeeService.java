@@ -16,8 +16,7 @@ public class EmployeeService implements EmployeeServiceInterface{
 
     @Override
     public Employee addEmployee(Employee employee) {
-        Employee savedEmployee = employeeRepository.save(employee);
-        return savedEmployee;
+        return employeeRepository.save(employee);
     }
 
     @Override
@@ -38,8 +37,7 @@ public class EmployeeService implements EmployeeServiceInterface{
 
     @Override
     public List<Employee> addAllEmployee(List<Employee> employee) {
-        List<Employee>  employeeList = employeeRepository.saveAll(employee);
-        return employeeList;
+        return employeeRepository.saveAll(employee);
     }
 
     @Override
